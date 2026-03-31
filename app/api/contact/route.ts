@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+export const runtime = 'edge';
+
 // Usamos la API Key proporcionada para crear el cliente de Resend.
 const resend = new Resend('re_4ZqByq94_G3o78QR3MRLJfp5igzqidt1n');
 
