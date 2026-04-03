@@ -28,7 +28,7 @@ export default function Home() {
       if (!res.ok) throw new Error('Error al enviar el formulario');
       setFormStatus({ isLoading: false, isSuccess: true, error: '' });
       e.currentTarget.reset();
-    } catch (err) {
+    } catch {
       setFormStatus({ isLoading: false, isSuccess: false, error: 'Hubo un error enviando el email. Inténtalo de nuevo.' });
     }
   };
@@ -137,7 +137,7 @@ export default function Home() {
         </div>
         <div className={styles.testimonialGrid}>
           <div className={`${styles.card} glass-panel`}>
-            <p className={styles.quote}>"Nuestro chatbot de triage en WhatsApp no lograba escribir citas en las agendas de Clinic Cloud de nuestros clientes médicos. Salutaigestion nos arregló este bloqueo tecnológico en solo 48 horas."</p>
+            <p className={styles.quote}>&quot;Nuestro chatbot de triage en WhatsApp no lograba escribir citas en las agendas de Clinic Cloud de nuestros clientes médicos. Salutaigestion nos arregló este bloqueo tecnológico en solo 48 horas.&quot;</p>
             <div className={styles.author}>
               <div className={styles.avatar}></div>
               <div>
@@ -147,7 +147,7 @@ export default function Home() {
             </div>
           </div>
           <div className={`${styles.card} glass-panel`}>
-            <p className={styles.quote}>"Teníamos que crear un paciente y asociarle una consulta por voz desde nuestra IA. Hacer esto uno a uno con Doctoralia y Gesten era inviable. El middleware de Salutaigestion es oro puro."</p>
+            <p className={styles.quote}>&quot;Teníamos que crear un paciente y asociarle una consulta por voz desde nuestra IA. Hacer esto uno a uno con Doctoralia y Gesten era inviable. El middleware de Salutaigestion es oro puro.&quot;</p>
             <div className={styles.author}>
               <div className={styles.avatar}></div>
               <div>
