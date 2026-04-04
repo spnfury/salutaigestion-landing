@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 export const runtime = 'edge';
 
 // Usamos la API Key proporcionada para crear el cliente de Resend.
-const resend = new Resend('re_4ZqByq94_G3o78QR3MRLJfp5igzqidt1n');
+const resend = new Resend('re_K7wbaVUc_8To1Ew4AwmGZDdZspHgjeCMf');
 
 export async function POST(request: Request) {
   try {
