@@ -43,8 +43,7 @@ export default function Home() {
   };
 
   const toggleFaq = (index: number) => {
-    if (openFaq === index) setOpenFaq(null);
-    else setOpenFaq(index);
+    setOpenFaq(openFaq === index ? null : index);
   };
 
   const logos = [
@@ -60,20 +59,20 @@ export default function Home() {
 
   const faqs = [
     {
-      q: "¿Cómo funciona la conexión con tantos softwares a la vez?",
-      a: "Salutaigestion.com actúa como un middleware universal. En lugar de desarrollar una integración distinta para Bewe, otra para Doctoralia y otra para Gesten, tu agencia sólo se integra con nuestra API, y nosotros nos encargamos de traducir y enrutar las peticiones al sistema destino de cada clínica.",
+      q: "¿Cómo os conectáis a tantos softwares a la vez?",
+      a: "Actuamos como un middleware universal. En vez de picar una integración distinta para Bewe, otra para Doctoralia y otra para Gesten, tu agencia se integra una sola vez con nuestra API y nosotros traducimos y enrutamos las peticiones al sistema destino de cada clínica.",
     },
     {
-      q: "¿Está preparada para proyectos con alta demanda de SEO?",
-      a: "Totalmente. Entendemos que muchas agencias de IA crean frontends o portales de citas. Nuestra API está diseñada para entregar datos estructurados y ultrarrápidos, 100% compatibles con frameworks como Next.js, favoreciendo la indexación en buscadores (SEO).",
+      q: "¿Funciona bien para proyectos con fuerte componente SEO?",
+      a: "Sí. Muchos de nuestros clientes montan portales de citas con Next.js o Astro. Nuestra API devuelve datos estructurados y rápidos, listos para SSR, lo que ayuda a posicionar sin sacrificar experiencia.",
     },
     {
-      q: "¿Es seguro a nivel médico? (HIPAA / RGPD)",
-      a: "Sí. Toda la información pasa por canales encriptados (TLS 1.3) y no persistimos datos sensibles en nuestros servidores salvo que nos lo exijas por contrato. Cumplimos estrictamente las normativas RGPD y HIPAA para operativas de salud.",
+      q: "¿Es seguro a nivel médico (HIPAA / RGPD)?",
+      a: "Todo pasa por canales cifrados (TLS 1.3) y no persistimos datos sensibles salvo que el contrato lo exija. Cumplimos RGPD y HIPAA porque operamos dentro del sector salud, no porque toque.",
     },
     {
-      q: "¿Cuánto tiempo me ahorro?",
-      a: "En promedio, una agencia IA reduce su time-to-market de 3 meses a tan solo 48 horas de trabajo. No tienes que lidiar con documentaciones obsoletas, fallos de conectividad o limitación de IPs de los softwares legacy.",
+      q: "¿Cuánto me ahorro en tiempo?",
+      a: "Pasamos de 3 meses de integración a unas 48 horas. Sin leer doc obsoleta, sin pelearte con soporte, sin limitaciones de IP absurdas.",
     },
   ];
 
@@ -82,50 +81,90 @@ export default function Home() {
       {/* HEADER */}
       <header className={styles.header}>
         <div className={styles.logo}>
-          <span className="text-gradient">Salutai</span>gestion.com
+          <svg
+            className={styles.logoMark}
+            viewBox="0 0 64 64"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect width="64" height="64" rx="14" fill="#C8FF3A" />
+            <path d="M24 18h16v10h10v8H40v10H24V36H14v-8h10z" fill="#0D0D10" />
+            <circle
+              cx="48"
+              cy="16"
+              r="7"
+              fill="#FF5A36"
+              stroke="#0D0D10"
+              strokeWidth="3"
+            />
+          </svg>
+          <span>
+            <span className={styles.logoWord}>salutai</span>
+            <span className={styles.logoSuffix}>.gestion</span>
+          </span>
         </div>
         <nav className={styles.navLinks}>
-          <a href="#features">Solución</a>
+          <a href="#features">Cómo funciona</a>
           <a href="#integrations">Integraciones</a>
-          <a href="#faq">Dudas Frecuentes</a>
+          <a href="#faq">Dudas</a>
         </nav>
         <a href="#contact" className={styles.ctaBtnPrimary}>
-          Obtener API Key
+          Obtener API Key →
         </a>
       </header>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section className={styles.hero}>
-        <div className={styles.heroTag}>
-          Para Agencias de IA y Automatización
+        <div className={styles.sticker}>
+          De 3 meses a 48h
+          <span className={styles.stickerSmall}>Garantizado</span>
         </div>
+
+        <div className={styles.heroTag}>
+          <span className={styles.liveDot}></span>
+          Hecho para agencias de IA
+        </div>
+
         <h1 className={styles.heroTitle}>
-          Conecta tu IA con cualquier{" "}
-          <span className="text-gradient">Software Médico</span> en minutos.
+          Conecta tu IA con <em>cualquier</em> software médico.{" "}
+          <span className="text-coral">Sin dolor.</span>
         </h1>
+
         <p className={styles.heroDesc}>
-          La primera API abierta que resuelve el dolor de cabeza de las
-          integraciones. Sincroniza agendas, citas y datos clínicos desde tu bot
-          de IA o portal Next.js (100% optimizado para SEO) con los principales
-          softwares del mercado.
+          Una sola API, todos los softwares clínicos del mercado. Deja de perder
+          contratos porque Doctoralia y Bewe son un laberinto.
         </p>
+
         <div className={styles.heroCtas}>
           <a href="#contact" className={styles.ctaBtnPrimary}>
-            Contacto y Precios
+            Empieza a integrar →
           </a>
           <a href="#features" className={styles.ctaBtnSecondary}>
-            Ver Documentación
+            Ver cómo funciona
           </a>
         </div>
+
+        <svg
+          className={styles.ekgWrapper}
+          viewBox="0 0 900 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            className={styles.ekgLine}
+            d="M0 30 L180 30 L200 30 L215 10 L230 50 L250 5 L270 55 L290 30 L450 30 L470 30 L485 14 L500 46 L520 30 L700 30 L720 30 L735 18 L750 42 L770 30 L900 30"
+          />
+        </svg>
       </section>
 
-      {/* MARQUEE INTEGRACIONES */}
+      {/* MARQUEE */}
       <section id="integrations" className={styles.marqueeSection}>
+        <div className={styles.marqueeLabel}>Integramos</div>
         <div className={styles.marqueeTrack}>
-          {/* Duplicamos los logos para lograr el efecto infinito */}
           {[...logos, ...logos].map((logo, idx) => (
             <div key={idx} className={styles.marqueeLogo}>
-              ◎ {logo}
+              {logo}
             </div>
           ))}
         </div>
@@ -134,43 +173,51 @@ export default function Home() {
       {/* FEATURES */}
       <section id="features" className={styles.features}>
         <div className={styles.sectionHeader}>
+          <span className={styles.sectionKicker}>Cómo te ayudamos</span>
           <h2 className={styles.sectionTitle}>
-            La infraestructura que te faltaba
+            La infraestructura que te <em>faltaba</em>
           </h2>
           <p className={styles.sectionSubtitle}>
-            Olvídate de APIs inconsistentes y soporte inexistente. Desarrolla
-            features geniales para clínicas, sin pisarte los dedos.
+            Olvida APIs inconsistentes y soporte fantasma. Construye features
+            reales sin pisarte los dedos con el legacy.
           </p>
         </div>
 
         <div className={styles.grid}>
-          <div className={`${styles.card} glass-panel`}>
-            <div className={styles.cardIcon}>⚡</div>
-            <h3 className={styles.cardTitle}>Un Punto de Entrada</h3>
+          <div className={styles.card}>
+            <span className={styles.cardNumber}>01</span>
+            <div className={styles.cardIcon}>◎</div>
+            <h3 className={styles.cardTitle}>Un solo endpoint</h3>
             <p className={styles.cardDesc}>
-              Escribe código una sola vez. Conéctate a Salutaigestion.com y
-              obtendrás acceso bidireccional instantáneo a Doctoralia, Bewe,
-              GestioMED, entre muchos otros.
+              Escribe código una vez. Conectas a Salutai y tienes acceso
+              bidireccional a Doctoralia, Bewe, GestioMED y compañía. Sin
+              repetir trabajo por cada cliente.
             </p>
           </div>
 
-          <div className={`${styles.card} glass-panel`}>
-            <div className={styles.cardIcon}>🔍</div>
-            <h3 className={styles.cardTitle}>100% Optimizado para SEO</h3>
+          <div className={styles.card}>
+            <span className={styles.cardNumber}>02</span>
+            <div className={`${styles.cardIcon} ${styles.cardIconCoral}`}>
+              ⚡
+            </div>
+            <h3 className={styles.cardTitle}>SEO-ready</h3>
             <p className={styles.cardDesc}>
-              Ideal para portales frontend (Next.js/React). Respuesta de
-              milisegundos y formatos de datos listos para renderizado en
-              servidor (SSR), maximizando el SEO de tus clínicas.
+              Respuesta en milisegundos y datos listos para SSR. Ideal si tu
+              stack es Next.js, Astro o Remix y necesitas posicionar portales de
+              citas rápido.
             </p>
           </div>
 
-          <div className={`${styles.card} glass-panel`}>
-            <div className={styles.cardIcon}>🔒</div>
-            <h3 className={styles.cardTitle}>Seguridad Grado Médico</h3>
+          <div className={styles.card}>
+            <span className={styles.cardNumber}>03</span>
+            <div className={`${styles.cardIcon} ${styles.cardIconCream}`}>
+              ✦
+            </div>
+            <h3 className={styles.cardTitle}>Seguridad médica</h3>
             <p className={styles.cardDesc}>
-              Despreocúpate de la privacidad. Nuestra capa de middleware
-              incorpora auditoría activa, encriptación AES-256 e
-              interoperabilidad compatible con RGPD europea.
+              TLS 1.3, cifrado AES-256, auditoría activa y cumplimiento
+              RGPD/HIPAA. Sin trucos: diseñado para sector salud desde el minuto
+              cero.
             </p>
           </div>
         </div>
@@ -179,31 +226,32 @@ export default function Home() {
       {/* TESTIMONIALS */}
       <section className={styles.testimonials}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Credibilidad en el Sector</h2>
+          <span className={styles.sectionKicker}>Desde la trinchera</span>
+          <h2 className={styles.sectionTitle}>
+            Gente que ya <em>duerme</em> mejor
+          </h2>
         </div>
         <div className={styles.testimonialGrid}>
-          <div className={`${styles.card} glass-panel`}>
+          <div className={styles.testimonialCard}>
             <p className={styles.quote}>
-              &quot;Nuestro chatbot de triage en WhatsApp no lograba escribir
-              citas en las agendas de Clinic Cloud de nuestros clientes médicos.
-              Salutaigestion nos arregló este bloqueo tecnológico en solo 48
-              horas.&quot;
+              Nuestro chatbot de triage en WhatsApp no podía escribir citas en
+              las agendas de Clinic Cloud. Salutai lo desbloqueó en 48 horas.
+              Literalmente.
             </p>
             <div className={styles.author}>
               <div className={styles.avatar}></div>
               <div>
                 <div className={styles.authorName}>Marcos Torres</div>
                 <div className={styles.authorRole}>
-                  CTO en MedBot AI Agencies
+                  CTO · MedBot AI Agencies
                 </div>
               </div>
             </div>
           </div>
-          <div className={`${styles.card} glass-panel`}>
+          <div className={styles.testimonialCard}>
             <p className={styles.quote}>
-              &quot;Teníamos que crear un paciente y asociarle una consulta por
-              voz desde nuestra IA. Hacer esto uno a uno con Doctoralia y Gesten
-              era inviable. El middleware de Salutaigestion es oro puro.&quot;
+              Integrar Doctoralia y Gesten a mano era inviable. Con Salutai
+              hicimos POC en una tarde y cerramos el contrato la misma semana.
             </p>
             <div className={styles.author}>
               <div className={styles.avatar}></div>
@@ -219,7 +267,10 @@ export default function Home() {
       {/* FAQ */}
       <section id="faq" className={styles.faq}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Dudas Frecuentes</h2>
+          <span className={styles.sectionKicker}>Dudas frecuentes</span>
+          <h2 className={styles.sectionTitle}>
+            Lo que <em>todos</em> preguntan
+          </h2>
         </div>
         <div>
           {faqs.map((faq, i) => (
@@ -227,6 +278,7 @@ export default function Home() {
               <button
                 className={styles.accordionHeader}
                 onClick={() => toggleFaq(i)}
+                aria-expanded={openFaq === i}
               >
                 {faq.q}
                 <span className={styles.accordionIcon}>
@@ -241,63 +293,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACT CTA */}
+      {/* CONTACT */}
       <section id="contact" className={styles.contact}>
-        <div className={`${styles.contactBox} glass-panel`}>
+        <div className={styles.contactBox}>
           <div>
+            <span className={styles.sectionKicker}>Hablemos</span>
             <h2 className={styles.sectionTitle} style={{ textAlign: "left" }}>
-              ¿Listo para dominar el sector médico?
+              ¿Listo para <em>dejar de sufrir</em>?
             </h2>
-            <p className={styles.sectionSubtitle} style={{ marginLeft: 0 }}>
+            <p
+              className={styles.sectionSubtitle}
+              style={{ marginLeft: 0, textAlign: "left", maxWidth: "100%" }}
+            >
               Deja de perder contratos de IA porque no puedes integrarte al
-              software del cliente. Háblanos y hagamos una prueba de concepto en
-              10 minutos.
+              software del cliente. Te hacemos POC en 10 minutos.
             </p>
           </div>
           <form
             onSubmit={handleFormSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+            style={{ display: "flex", flexDirection: "column" }}
           >
             {formStatus.isSuccess && (
-              <div
-                style={{
-                  padding: "1rem",
-                  background: "rgba(16, 185, 129, 0.1)",
-                  color: "#34d399",
-                  borderRadius: "8px",
-                  border: "1px solid rgba(52, 211, 153, 0.3)",
-                }}
-              >
-                ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo
-                pronto.
+              <div className={styles.successMsg}>
+                ¡Recibido! Te escribimos en breve.
               </div>
             )}
             {formStatus.error && (
-              <div
-                style={{
-                  padding: "1rem",
-                  background: "rgba(239, 68, 68, 0.1)",
-                  color: "#f87171",
-                  borderRadius: "8px",
-                  border: "1px solid rgba(248, 113, 113, 0.3)",
-                }}
-              >
-                {formStatus.error}
-              </div>
+              <div className={styles.errorMsg}>{formStatus.error}</div>
             )}
             <div className={styles.formGroup}>
-              <label>Nombre de tu Agencia IA</label>
+              <label>Nombre de tu agencia</label>
               <input
                 type="text"
                 name="agenciaName"
                 className={styles.input}
-                placeholder="Ej. Nexus IA..."
+                placeholder="Ej. Nexus IA"
                 required
                 disabled={formStatus.isLoading}
               />
             </div>
             <div className={styles.formGroup}>
-              <label>Correo Electrónico (Trabajo)</label>
+              <label>Email de trabajo</label>
               <input
                 type="email"
                 name="email"
@@ -308,25 +344,22 @@ export default function Home() {
               />
             </div>
             <div className={styles.formGroup}>
-              <label>Software clínico principal que te bloquea</label>
+              <label>Software clínico que te bloquea</label>
               <input
                 type="text"
                 name="software"
                 className={styles.input}
-                placeholder="Doctoralia, Gesten, Bewe..."
+                placeholder="Doctoralia, Gesten, Bewe…"
                 required
                 disabled={formStatus.isLoading}
               />
             </div>
             <button
               type="submit"
-              className={styles.ctaBtnPrimary}
-              style={{ marginTop: "1rem", width: "100%" }}
+              className={styles.formBtn}
               disabled={formStatus.isLoading}
             >
-              {formStatus.isLoading
-                ? "Enviando petición..."
-                : "Solicitar Reunión Inmediata"}
+              {formStatus.isLoading ? "Enviando…" : "Solicitar reunión →"}
             </button>
           </form>
         </div>
@@ -334,8 +367,10 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <p>
-          © {new Date().getFullYear()} Salutaigestion.com. Todos los derechos
-          reservados. Primera API abierta SEO-ready para sector salud.
+          © {new Date().getFullYear()} Salutai · Todos los derechos reservados
+        </p>
+        <p className={styles.footerMade}>
+          Hecho con <span>♥</span> en Barcelona
         </p>
       </footer>
     </main>

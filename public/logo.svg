@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" fill="none">
+  <rect x="4" y="4" width="48" height="48" rx="12" fill="#C8FF3A"/>
+  <path d="M22 18h12v10h10v12H34v10H22V40H12V28h10z" fill="#0D0D10"/>
+  <circle cx="42" cy="14" r="5" fill="#FF5A36" stroke="#0D0D10" stroke-width="2"/>
+  <text x="64" y="36" font-family="'Instrument Serif', Georgia, serif" font-size="28" font-style="italic" fill="#F4F0E8">salutai</text>
+  <text x="136" y="36" font-family="'Space Grotesk', system-ui, sans-serif" font-size="22" font-weight="600" fill="#C8FF3A">.gestion</text>
+</svg>
