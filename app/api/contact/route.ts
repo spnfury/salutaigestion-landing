@@ -1,10 +1,9 @@
-import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
-// Usamos la API Key proporcionada para crear el cliente de Resend.
-const resend = new Resend('re_K7wbaVUc_8To1Ew4AwmGZDdZspHgjeCMf');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -13,8 +12,8 @@ export async function POST(request: Request) {
 
     if (!agenciaName || !email || !software) {
       return NextResponse.json(
-        { error: 'Todos los campos son obligatorios' },
-        { status: 400 }
+        { error: "Todos los campos son obligatorios" },
+        { status: 400 },
       );
     }
 
@@ -22,13 +21,13 @@ export async function POST(request: Request) {
     // NOTA: Para correos externos (no verificados en Resend Free Tier),
     // es mandatorio usar 'onboarding@resend.dev' en el parámetro 'from'.
     // El 'to' DEBE ser el correo electrónico verificado en tu cuenta de Resend,
-    // o puedes pasarlo por variable de entorno. Aquí temporalmente enviaremos a 
+    // o puedes pasarlo por variable de entorno. Aquí temporalmente enviaremos a
     // "tu-email-verificado@ejemplo.com" o al que deficiencias en process.env.
-    
-    const destinatario = process.env.CONTACT_EMAIL || 'thevega82@gmail.com'; 
+
+    const destinatario = process.env.CONTACT_EMAIL || "thevega82@gmail.com";
 
     const data = await resend.emails.send({
-      from: 'Salutaigestion Leads <onboarding@resend.dev>',
+      from: "Salutaigestion Leads <onboarding@resend.dev>",
       to: [destinatario],
       subject: `Nuevo Lead Inbound: ${agenciaName}`,
       html: `
@@ -40,16 +39,19 @@ export async function POST(request: Request) {
     });
 
     if (data.error) {
-       console.error("Resend API Error:", data.error);
-       return NextResponse.json({ error: 'Fallo al despachar el correo' }, { status: 500 });
+      console.error("Resend API Error:", data.error);
+      return NextResponse.json(
+        { error: "Fallo al despachar el correo" },
+        { status: 500 },
+      );
     }
 
     return NextResponse.json({ success: true, id: data.data?.id });
   } catch (error) {
     console.error("Endpoint Contact Error:", error);
     return NextResponse.json(
-      { error: 'Error interno de servidor' },
-      { status: 500 }
+      { error: "Error interno de servidor" },
+      { status: 500 },
     );
   }
 }
