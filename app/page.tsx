@@ -107,6 +107,7 @@ export default function Home() {
         <nav className={styles.navLinks}>
           <a href="#features">Cómo funciona</a>
           <a href="#integrations">Integraciones</a>
+          <a href="/blog">Blog</a>
           <a href="#faq">Dudas</a>
         </nav>
         <a href="#contact" className={styles.ctaBtnPrimary}>
@@ -370,7 +371,7 @@ export default function Home() {
           © {new Date().getFullYear()} Salutai · Todos los derechos reservados
         </p>
         <p className={styles.footerMade}>
-          Hecho con <span>♥</span> en Barcelona
+          <a href="/blog">Blog</a> · Hecho con <span>♥</span> en Barcelona
         </p>
       </footer>
     </main>
