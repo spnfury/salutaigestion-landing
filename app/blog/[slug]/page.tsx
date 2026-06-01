@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "../blog.module.css";
-import { articles, getArticle, getRelated } from "../articles";
+import { articles, getArticle, getRelated, SITE } from "../articles";
 import { BlogHeader, BlogFooter, CtaBox } from "../components";
 import { RichText } from "../RichText";
+import { Cover } from "../Cover";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -43,14 +44,43 @@ export default function ArticlePage({
 
   const related = getRelated(params.slug);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.date,
+    dateModified: article.date,
+    inLanguage: "es-ES",
+    keywords: article.keywords.join(", "),
+    articleSection: article.category,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE}/blog/${article.slug}`,
+    },
+    author: { "@type": "Organization", name: "Salutai", url: SITE },
+    publisher: {
+      "@type": "Organization",
+      name: "Salutai",
+      url: SITE,
+      logo: { "@type": "ImageObject", url: `${SITE}/icon.svg` },
+    },
+  };
+
   return (
     <main className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <BlogHeader />
 
       <article className={styles.article}>
         <nav className={styles.breadcrumb}>
           <Link href="/blog">Blog</Link> / {article.category}
         </nav>
+
+        <Cover slug={article.slug} category={article.category} variant="wide" />
 
         <header className={styles.articleHeader}>
           <div className={styles.articleMeta}>

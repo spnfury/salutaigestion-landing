@@ -5,6 +5,8 @@
 // internos dentro del texto usan sintaxis markdown: [texto](/blog/slug) o
 // [texto](/#contact). El negrita se escribe con **dobles asteriscos**.
 
+export const SITE = "https://salutaigestion.com";
+
 export type ContentBlock =
   | { type: "h2"; text: string }
   | { type: "p"; text: string }

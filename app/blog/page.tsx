@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./blog.module.css";
-import { articles } from "./articles";
+import { articles, SITE } from "./articles";
 import { BlogHeader, BlogFooter, CtaBox } from "./components";
+import { Cover } from "./Cover";
 
 export const metadata: Metadata = {
   title: "Blog · Salutai — Integraciones de IA con software clínico",
@@ -18,9 +19,34 @@ export const metadata: Metadata = {
   },
 };
 
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Blog de Salutai",
+  description:
+    "Cómo integrar tu IA con el software de gestión clínica y convertir esa integración en contratos.",
+  url: `${SITE}/blog`,
+  publisher: {
+    "@type": "Organization",
+    name: "Salutai",
+    url: SITE,
+  },
+  blogPost: articles.map((a) => ({
+    "@type": "BlogPosting",
+    headline: a.title,
+    description: a.excerpt,
+    datePublished: a.date,
+    url: `${SITE}/blog/${a.slug}`,
+  })),
+};
+
 export default function BlogIndex() {
   return (
     <main className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <BlogHeader />
 
       <section className={styles.indexHero}>
@@ -42,6 +68,7 @@ export default function BlogIndex() {
             href={`/blog/${article.slug}`}
             className={styles.card}
           >
+            <Cover slug={article.slug} category={article.category} variant="card" />
             <div className={styles.cardMeta}>
               <span className={styles.cardTag}>{article.category}</span>
               <span>{article.readingTime}</span>

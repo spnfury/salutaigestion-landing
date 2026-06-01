@@ -95,6 +95,23 @@
   margin: 0 auto;
 }
 
+/* ---- Covers ---- */
+.coverWide {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 36px;
+}
+.coverCard {
+  display: block;
+  width: calc(100% + 56px);
+  height: auto;
+  margin: -28px -28px 22px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
 /* ---- Article grid ---- */
 .grid {
   display: grid;
