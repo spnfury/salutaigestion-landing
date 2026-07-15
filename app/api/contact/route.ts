@@ -19,9 +19,9 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey);
 
     const body = await request.json();
-    const { agenciaName, email, software } = body;
+    const { agenciaName, email, phone, software } = body;
 
-    if (!agenciaName || !email || !software) {
+    if (!agenciaName || !email || !phone || !software) {
       return NextResponse.json(
         { error: "Todos los campos son obligatorios" },
         { status: 400 },
@@ -45,6 +45,7 @@ export async function POST(request: Request) {
         <h2>Nuevo contacto desde Salutaigestion.com</h2>
         <p><strong>Agencia IA:</strong> ${agenciaName}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Teléfono:</strong> ${phone}</p>
         <p><strong>Software bloqueante:</strong> ${software}</p>
       `,
     });

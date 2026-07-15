@@ -20,6 +20,7 @@ export default function Home() {
     const payload = {
       agenciaName: formData.get("agenciaName"),
       email: formData.get("email"),
+      phone: formData.get("phone"),
       software: formData.get("software"),
     };
 
@@ -340,6 +341,17 @@ export default function Home() {
                 name="email"
                 className={styles.input}
                 placeholder="ceo@agencia.com"
+                required
+                disabled={formStatus.isLoading}
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Teléfono</label>
+              <input
+                type="tel"
+                name="phone"
+                className={styles.input}
+                placeholder="+34 600 000 000"
                 required
                 disabled={formStatus.isLoading}
               />
